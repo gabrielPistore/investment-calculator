@@ -1,16 +1,31 @@
-import Input from "./components/Input"
-import Navbar from "./components/Navbar"
+import { useState } from "react"
+
+import Header from "./components/Header"
+import Investment from "./components/Investment"
+import Results from "./components/Results"
 
 function App() {
+  const [investment, setInvestment] = useState({
+    initial: 10000,
+    annual: 300,
+    expectedReturn: 5.5,
+    duration: 12,
+  })
+
+  console.log(investment)
+
+  function handleParamsChange(param, newValue) {
+    setInvestment((prev) => ({
+      ...prev,
+      [param]: newValue,
+    }))
+  }
+
   return (
     <>
-      <Navbar />
-      <form className="max-w-lg mx-auto my-8 p-8 rounded grid grid-cols-2 gap-x-8 gap-y-10 place-content-center bg-gradient-to-r from-[#307e6c] to-[#2b996d] ">
-        <Input htmlFor="initialInvestment" label="Initial Investment" />
-        <Input htmlFor="annualInvestment" label="Annual Investment" />
-        <Input htmlFor="expectedReturn" label="Expected Return" />
-        <Input htmlFor="duration" label="Duration" />
-      </form>
+      <Header />
+      <Investment params={investment} onParamsChange={handleParamsChange} />
+      <Results params={investment} />
     </>
   )
 }
