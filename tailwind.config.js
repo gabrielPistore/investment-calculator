@@ -5,6 +5,7 @@ export default {
     extend: {
       fontFamily: {
         quicksand: ["Quicksand", "sans-serif"],
+        roboto_condensed: ["Roboto Condensed", "sans-serif"],
       },
     },
   },
