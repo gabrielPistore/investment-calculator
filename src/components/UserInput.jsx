@@ -8,22 +8,22 @@ function UserInput({ userInput, onChange }) {
       <Input
         label="initial investment"
         value={userInput.initialInvestment}
-        onChange={(e) => onChange("initialInvestment", e.target.value)}
+        onChange={(e) => onChange("initialInvestment", Number(e.target.value))}
       />
       <Input
         label="annual investment"
         value={userInput.annualInvestment}
-        onChange={(e) => onChange("annualInvestment", e.target.value)}
+        onChange={(e) => onChange("annualInvestment", Number(e.target.value))}
       />
       <Input
         label="expected return"
         value={userInput.expectedReturn}
-        onChange={(e) => onChange("expectedReturn", e.target.value)}
+        onChange={(e) => onChange("expectedReturn", Number(e.target.value))}
       />
       <Input
         label="duration"
         value={userInput.duration}
-        onChange={(e) => onChange("duration", e.target.value)}
+        onChange={(e) => onChange("duration", Number(e.target.value))}
       />
     </form>
   )
