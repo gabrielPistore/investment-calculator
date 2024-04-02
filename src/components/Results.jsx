@@ -1,10 +1,6 @@
 import { calculateInvestmentResults } from "../util/investment"
 
-function Results({ params }) {
-  const data = params.duration > 1 ? calculateInvestmentResults(params) : []
-
-  console.log(data)
-
+function Results() {
   return (
     <table className="mx-auto text-right table-fixed max-w-[50rem]">
       <thead className="text-xs text-[#83e6c0]">

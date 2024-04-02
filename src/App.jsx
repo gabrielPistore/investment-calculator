@@ -1,31 +1,28 @@
 import { useState } from "react"
-
 import Header from "./components/Header"
-import Investment from "./components/Investment"
+import UserInput from "./components/UserInput"
 import Results from "./components/Results"
 
 function App() {
-  const [investment, setInvestment] = useState({
-    initial: 10000,
-    annual: 300,
+  const [userInput, setUserInput] = useState({
+    initialInvestment: 10000,
+    annualInvestment: 300,
     expectedReturn: 5.5,
     duration: 12,
   })
 
-  console.log(investment)
-
-  function handleParamsChange(param, newValue) {
-    setInvestment((prev) => ({
-      ...prev,
-      [param]: newValue,
+  function handleChange(field, value) {
+    setUserInput((prevUserInput) => ({
+      ...prevUserInput,
+      [field]: value,
     }))
   }
 
   return (
     <>
       <Header />
-      <Investment params={investment} onParamsChange={handleParamsChange} />
-      <Results params={investment} />
+      <UserInput userInput={userInput} onChange={handleChange} />
+      <Results />
     </>
   )
 }
