@@ -1,17 +1,9 @@
-import { useState } from "react"
-import { calculateInvestmentResults } from "../util/investment"
+import { calculateInvestmentResults, formatter } from "../util/investment"
 
 function Results({ input }) {
-  const numberFormat = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-  })
-
   const results = calculateInvestmentResults(input)
   let totalInterest = 0
   let investedCapital = input.initialInvestment
-
-  console.log(results)
 
   return (
     <table className="mx-auto text-right table-fixed max-w-[50rem]">
@@ -25,24 +17,17 @@ function Results({ input }) {
         </tr>
       </thead>
       <tbody className="text-sm font-roboto_condensed text-[#c2e9e0] border-spacing-4">
-        {/* <tr>
-          <td>Teste</td>
-          <td>Teste</td>
-          <td>Teste</td>
-          <td>Teste</td>
-          <td>Teste</td>
-        </tr> */}
         {results.map((result) => {
           totalInterest += result.interest
           investedCapital += input.annualInvestment
 
           return (
-            <tr>
+            <tr key={result.year}>
               <td>{result.year}</td>
-              <td>{numberFormat.format(result.valueEndOfYear)}</td>
-              <td>{numberFormat.format(result.interest)}</td>
-              <td>{numberFormat.format(totalInterest)}</td>
-              <td>{numberFormat.format(investedCapital)}</td>
+              <td>{formatter.format(result.valueEndOfYear)}</td>
+              <td>{formatter.format(result.interest)}</td>
+              <td>{formatter.format(totalInterest)}</td>
+              <td>{formatter.format(investedCapital)}</td>
             </tr>
           )
         })}
