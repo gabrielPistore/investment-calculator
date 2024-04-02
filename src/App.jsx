@@ -18,11 +18,17 @@ function App() {
     }))
   }
 
+  const isInputValid = userInput.duration > 0
+
   return (
     <>
       <Header />
       <UserInput userInput={userInput} onChange={handleChange} />
-      <Results input={userInput} />
+      {isInputValid ? (
+        <Results input={userInput} />
+      ) : (
+        <p className="text-center">Duration must be greater than 0</p>
+      )}
     </>
   )
 }
